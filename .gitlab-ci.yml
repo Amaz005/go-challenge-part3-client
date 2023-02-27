@@ -1,0 +1,18 @@
+stages:
+  - build
+  - deploy
+
+build project:
+  stage: build
+  image: node:16
+  script:
+    - yarn
+    - yarn lint
+    - yarn build
+
+netlify:
+  stage: deploy
+  image: node:16
+  script:
+    - npm install -g netlify-cli
+    - netlify deploy --dir=.next --prod
