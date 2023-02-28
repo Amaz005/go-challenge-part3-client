@@ -44,18 +44,18 @@ export default function Home() {
 
   useEffect(() => {
       const controller = new AbortController()
-      // const fetchData = async () => {
-      //   try {
-      //     const res = await instance.get('/projects?owner=true')
-      //     setData(res.data)
-      //   } catch (err) {
-      //     console.log(err)
-      //   } finally {
-      //     setLoading(false)
-      //   }
-      // }
+      const fetchData = async () => {
+        try {
+          const res = await instance.get('/projects?owner=true')
+          setData(res.data)
+        } catch (err) {
+          console.log(err)
+        } finally {
+          setLoading(false)
+        }
+      }
       
-      // fetchData()
+      fetchData()
 
       return () => controller.abort()
   }, [])
@@ -84,8 +84,7 @@ export default function Home() {
 
   return (
     <Box width="30%" style={{ margin: "auto", textAlign:"center"}}>
-      Hello world!
-    {/* <Text fontWeight={"bold"} fontSize="20">Projects</Text>
+    <Text fontWeight={"bold"} fontSize="20">Projects</Text>
     <List spacing={3}>
       { !loading ? 
         data.map((item) => (
@@ -126,7 +125,7 @@ export default function Home() {
           }
         </List>
         : <></>
-      } */}
+      }
     </Box>
   )
 }
